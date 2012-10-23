@@ -1,0 +1,6 @@
+rvm ruby-1.9.3-p286@mmtunes
+
+echo -n "Auto-switch rvm - using gemset: "
+rvm gemset name
+
+which ruby
