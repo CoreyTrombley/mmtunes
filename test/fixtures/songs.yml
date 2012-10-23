@@ -1,9 +1,26 @@
+# == Schema Information
+#
+# Table name: songs
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  price      :decimal(, )
+#  file_name  :string(255)
+#  lyrics     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   name: MyString
   price: 9.99
+  file_name: MyString
+  lyrics: MyText
 
 two:
   name: MyString
   price: 9.99
+  file_name: MyString
+  lyrics: MyText
