@@ -13,6 +13,7 @@
 
 class Song < ActiveRecord::Base
   attr_accessible :file_name, :lyrics, :name, :price, :albums_attributes, :artists_attributes, :genres_attributes
+  mount_uploader :file_name, PhotoUploader
 
   has_and_belongs_to_many :albums
   has_and_belongs_to_many :artists

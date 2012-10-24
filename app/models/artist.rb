@@ -14,7 +14,7 @@
 class Artist < ActiveRecord::Base
   attr_accessible :bio, :dob, :name, :photo
 
-
+  mount_uploader :photo, PhotoUploader
   
   has_and_belongs_to_many :songs
 end

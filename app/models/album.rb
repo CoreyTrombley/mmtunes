@@ -13,7 +13,7 @@
 class Album < ActiveRecord::Base
   attr_accessible :name, :photo, :release
 
-
+  mount_uploader :photo, PhotoUploader
   
   has_and_belongs_to_many :songs
 end
