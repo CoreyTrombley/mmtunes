@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates_presence_of :password, :on => :create
 
-  has_and_belongs_to_many :songs
+  has_many :purchases
+  has_many :songs, :through => :purchases
   has_many :playlists
 end
