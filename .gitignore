@@ -23,3 +23,6 @@
 *.jpg
 *.jpeg
 *.gif
+
+/public
+db/*
