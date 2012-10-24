@@ -41,8 +41,8 @@
         <%= ar.file_field :photo %>
       </div>
       <div class="field">
-        <%= ar.label :date_of_birth %>
-        <%= ar.date_select :dob %>
+        <%= ar.label :date_of_birth  %>
+        <%= ar.date_select :dob, :order => [:month, :day, :year], :start_year => Time.now.year - 500 %>
       </div>
       <div class="field">
         <%= ar.label :bio %>
