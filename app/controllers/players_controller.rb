@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
 
   def index
     @user = current_user
-    @song = Song.all
+    @songs = Song.all
   end
+
 end
