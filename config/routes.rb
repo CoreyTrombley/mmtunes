@@ -5,6 +5,8 @@ Mmtunes::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   match '/player' => 'players#index', :via => :get
+  match '/buy' => 'songs#buy', :via => :post
+  resources :purchases
   resources :songs
   resources :artists
   resources :genres
