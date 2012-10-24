@@ -1,0 +1,61 @@
+<%= form_for @song, :html => {:multipart => true} do |f| %>
+  <div class="pull-left"> 
+    <div class="field">
+      <%= f.label :song_name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+    </div>
+    <div class="field">
+      <%= f.label :file_name %>
+      <%= f.file_field :file_name %>
+    </div>
+    <div class="field">
+      <%= f.label :lyrics %>
+      <%= f.text_field :lyrics %>
+    </div>
+  </div>
+  <div class="pull-left">
+    <div class="field">
+    <%= f.fields_for :albums do |a| %>
+      <div class="field">
+        <%= a.label :album_name %>
+        <%= a.text_field :name %>
+      </div>
+      <div class="field">
+        <%= a.label :cover_art %>
+        <%= a.file_field :photo %>
+      </div>
+    <% end %>
+  </div>
+  <div class="pull-left">
+    <%= f.fields_for :artists do |ar| %>
+      <div class="field">
+        <%= ar.label :artist_name %>
+        <%= ar.text_field :name %>
+      </div>
+      <div class="field">
+        <%= ar.label :artist_picture %>
+        <%= ar.file_field :photo %>
+      </div>
+      <div class="field">
+        <%= ar.label :date_of_birth %>
+        <%= ar.date_select :dob %>
+      </div>
+      <div class="field">
+        <%= ar.label :bio %>
+        <%= ar.text_area :bio, :rows => 3 %>
+      </div>
+    <% end %>
+  </div>
+    <%= f.fields_for :genres do |g| %>
+      <div class="field">
+        <%= g.label :genre %>
+        <%= g.text_field :name %>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

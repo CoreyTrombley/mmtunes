@@ -1,16 +1,19 @@
 # == Schema Information
 #
-# Table name: artists
+# Table name: albums
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  dob        :date
 #  photo      :string(255)
-#  bio        :text
+#  release    :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Artists < ActiveRecord::Base
-  attr_accessible :bio, :dob, :name, :photo
+class Album < ActiveRecord::Base
+  attr_accessible :name, :photo, :release
+
+
+  
+  has_and_belongs_to_many :songs
 end

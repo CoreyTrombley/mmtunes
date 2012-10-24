@@ -7,8 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container-fluid">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/player">
+        <% if current_user %>
+          Welcome <%= current_user.first_name %>
+        <% else %>
+          Guest
+        <% end %>
+      </a>
+      <ul class="nav">
+        <% if current_user %>
+          <%= create_nav_item("Log out", log_out_path) %>
+          <% if current_user.is_admin? %>
+            <%= create_nav_item("Add song", new_song_path) %>
+          <% end %>
+        <% else %>
+          <%= create_nav_item("Sign up", sign_up_path) %>
+          <%= create_nav_item("log in", log_in_path) %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <%= yield %>
+</div>
 </body>
 </html>

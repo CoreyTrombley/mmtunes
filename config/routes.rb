@@ -1,4 +1,18 @@
 Mmtunes::Application.routes.draw do
+
+
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  match '/player' => 'players#index', :via => :get
+  resources :songs
+  resources :artists
+  resources :genres
+  resources :albums
+  resources :playlists
+  resources :users
+  resources :sessions
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +62,7 @@ Mmtunes::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+ root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 

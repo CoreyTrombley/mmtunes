@@ -16,4 +16,10 @@
 
 # Ignored test folder
 /test
-/test/*
+
+#imgs
+/images
+*.png
+*.jpg
+*.jpeg
+*.gif

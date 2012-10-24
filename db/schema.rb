@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023124707) do
+ActiveRecord::Schema.define(:version => 20121023201405) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(:version => 20121023124707) do
     t.date     "release"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "albums_songs", :id => false, :force => true do |t|
+    t.integer "album_id"
+    t.integer "song_id"
   end
 
   create_table "artists", :force => true do |t|
@@ -30,16 +35,31 @@ ActiveRecord::Schema.define(:version => 20121023124707) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "artists_songs", :id => false, :force => true do |t|
+    t.integer "artist_id"
+    t.integer "song_id"
+  end
+
   create_table "genres", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  create_table "genres_songs", :id => false, :force => true do |t|
+    t.integer "genre_id"
+    t.integer "song_id"
+  end
+
   create_table "playlists", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "playlists_songs", :id => false, :force => true do |t|
+    t.integer "playlist_id"
+    t.integer "song_id"
   end
 
   create_table "songs", :force => true do |t|
@@ -49,6 +69,25 @@ ActiveRecord::Schema.define(:version => 20121023124707) do
     t.text     "lyrics"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "songs_users", :id => false, :force => true do |t|
+    t.integer "song_id"
+    t.integer "user_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "photo"
+    t.integer  "age"
+    t.string   "gender"
+    t.decimal  "balance"
+    t.boolean  "is_admin",        :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end
