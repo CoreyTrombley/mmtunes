@@ -4,9 +4,9 @@ class SongsController < ApplicationController
     @song.albums.build
     @song.artists.build
     @song.genres.build
+    @genres = Genre.all
   end
   def create
-    #raise params[:song].inspect
     @song = Song.new(params[:song])
     if @song.save
       redirect_to player_path
