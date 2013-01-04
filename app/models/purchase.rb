@@ -13,6 +13,6 @@
 class Purchase < ActiveRecord::Base
   attr_accessible :price_paid, :song_id, :user_id
 
-  belongs_to :songs
-  belongs_to :users
+  belongs_to :song
+  belongs_to :user
 end

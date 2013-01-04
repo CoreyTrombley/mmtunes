@@ -10,7 +10,7 @@
 #  photo           :string(255)
 #  age             :integer
 #  gender          :string(255)
-#  balance         :decimal(, )
+#  balance         :decimal(, )      default(0.0)
 #  is_admin        :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
