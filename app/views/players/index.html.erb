@@ -4,30 +4,72 @@
       <div class="span3">
         <%= image_tag("#{@user.photo}", :class => 'user_photo') %>
         <p><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
-        Your balance is <%= number_to_currency(@user.balance) %>
-        <%= link_to 'Add Funds', player_path, :class => 'label label-success' %>
+        <p>Your balance is </p>
+        <p><%= number_to_currency(@user.balance) %></p>
+        <p><%= link_to 'Add Funds', player_path, :class => 'label label-success' %></p>
+        <div>
+          <p>
+            <% if current_user.songs.empty? %>
+              You dont have any songs yet
+            <% else %>
+              Your purchased songs
+            <% end %>
+          </p>
+          <ul>
+            <% @user.songs.each do |song| %>
+              <li>
+                <%= song.name %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="span6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+      <div class="span6">
+        <h2>m.m.tunes</h2>
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  Media Controls
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse in">
+              <div class="accordion-inner">
+                <%= audio_tag( @user_songs.find_by_id(7).file_name , :controls => true) %>
+              </div>
+            </div>
+          </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  Song Data
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Song data goes here....
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <div class="span3">
         <h6>Song List</h6>
         <ul>
           <% @songs.each do |song| %>
             
-            <li><%= link_to( 'Buy', new_purchase_path(song), :class => 'btn btn-mini btn-success pull-left') if @user && !@user.songs.include?(song) %> <%= song.name %></li>
-            <li><%= number_to_currency(song.price) %><li>
+            <li><%= form_tag :purchases do %>
+              <%= hidden_field_tag 'song_id', song.id %>
+              <%= hidden_field_tag 'price_paid', song.price %>
+              <%= submit_tag "Buy", :class => 'btn btn-mini btn-success pull-left' if @user && !@user.songs.include?(song) %>
+            <% end %> <%= song.name if @user && !@user.songs.include?(song) %></li>
+            <li><%= number_to_currency(song.price) if @user && !@user.songs.include?(song) %><li>
           <% end %>
         </ul>
       </div>
     </div>
   </div>
 </div>
-
-
 
 
 
