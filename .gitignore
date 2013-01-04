@@ -26,3 +26,5 @@
 
 /public
 db/*
+
+db/migrate/20121023133815_create_users.rb
