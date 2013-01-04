@@ -53,7 +53,7 @@
     <%= f.fields_for :genres do |g| %>
       <div class="field">
         <%= g.label :genre %>
-        <%= g.text_field :name %>
+        <%= g.select :name, @genres.map {|g| g.name} %>
       </div>
     <% end %>
   </div>
